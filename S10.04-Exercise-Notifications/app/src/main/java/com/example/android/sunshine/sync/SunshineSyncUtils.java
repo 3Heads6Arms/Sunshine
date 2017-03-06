@@ -30,8 +30,6 @@ import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 
-import java.util.concurrent.TimeUnit;
-
 public class SunshineSyncUtils {
 
     /*
@@ -39,7 +37,7 @@ public class SunshineSyncUtils {
      * writing out a bunch of multiplication ourselves and risk making a silly mistake.
      */
     private static final int SYNC_INTERVAL_HOURS = 3;
-    private static final int SYNC_INTERVAL_SECONDS = (int) TimeUnit.HOURS.toSeconds(SYNC_INTERVAL_HOURS);
+    private static final int SYNC_INTERVAL_SECONDS = 3; //(int) TimeUnit.HOURS.toSeconds(SYNC_INTERVAL_HOURS);
     private static final int SYNC_FLEXTIME_SECONDS = SYNC_INTERVAL_SECONDS / 3;
 
     private static boolean sInitialized;
@@ -48,6 +46,7 @@ public class SunshineSyncUtils {
 
     /**
      * Schedules a repeating sync of Sunshine's weather data using FirebaseJobDispatcher.
+     *
      * @param context Context used to create the GooglePlayDriver that powers the
      *                FirebaseJobDispatcher
      */
@@ -99,6 +98,7 @@ public class SunshineSyncUtils {
         /* Schedule the Job with the dispatcher */
         dispatcher.schedule(syncSunshineJob);
     }
+
     /**
      * Creates periodic sync tasks and checks to see if an immediate sync is required. If an
      * immediate sync is required, this method will take care of making sure that sync occurs.
