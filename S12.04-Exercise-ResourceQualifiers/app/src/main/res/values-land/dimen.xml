@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="forecast_detail_horizontal_padding">16dp</item>
+    <item name="forecast_detail_vertical_padding">44dp</item>
+</resources>
